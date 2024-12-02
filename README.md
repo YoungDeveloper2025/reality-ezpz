@@ -54,7 +54,7 @@ This command will configure `sing-box` with `reality` security protocol over `tc
 ```
 bash <(curl -sL https://raw.githubusercontent.com/YoungDeveloper2025/reality-ezpz/master/reality-ezpz.sh)
 ```
-
+# With sudo
 ```
 sudo bash <(curl -sL https://raw.githubusercontent.com/YoungDeveloper2025/reality-ezpz/master/reality-ezpz.sh)
 ```
