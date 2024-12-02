@@ -47,7 +47,7 @@ image[python]="python:3.11-alpine"
 image[wgcf]="virb3/wgcf:2.2.18"
 
 defaults[transport]=tcp
-defaults[domain]=www.google.com
+defaults[domain]=sourceforge.net
 defaults[port]=443
 defaults[safenet]=OFF
 defaults[warp]=OFF
@@ -693,7 +693,7 @@ function install_packages {
   fi
   if ! which qrencode whiptail jq xxd zip unzip >/dev/null 2>&1; then
     if which apt >/dev/null 2>&1; then
-      apt update
+
       DEBIAN_FRONTEND=noninteractive apt install qrencode whiptail jq xxd zip unzip -y
       return 0
     fi
@@ -1476,27 +1476,6 @@ function print_client_configuration {
   echo "Client configuration:"
   echo ""
   echo "$client_config"
-  echo ""
-  echo "Or you can scan the QR code:"
-  echo ""
-  qrencode -t ansiutf8 "${client_config}"
-  ipv6=$(get_ipv6)
-  if [[ -n $ipv6 ]]; then
-    if [[ ${config[transport]} != 'shadowtls' ]]; then
-      client_config_ipv6=$(echo "$client_config" | sed "s/@${config[server]}:/@[${ipv6}]:/" | sed "s/#${username}/#${username}-ipv6/")
-    else
-      client_config_ipv6=$(echo "$client_config" | sed "s/\"server\":\"${config[server]}\"/\"server\":\"${ipv6}\"/")
-    fi
-    echo ""
-    echo "==================IPv6 Config======================"
-    echo "Client configuration:"
-    echo ""
-    echo "$client_config_ipv6"
-    echo ""
-    echo "Or you can scan the QR code:"
-    echo ""
-    qrencode -t ansiutf8 "${client_config_ipv6}"
-  fi
 }
 
 function upgrade {
