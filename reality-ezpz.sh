@@ -1360,17 +1360,6 @@ EOF
       },
       {
         "type": "field",
-        "outboundTag": "block",
-        "domain": [
-          $([[ ${config[safenet]} == ON ]] && echo '"geosite:category-porn",' || true)
-          "geosite:category-ads-all",
-          "domain:pushnotificationws.com",
-          "domain:sunlight-leds.com",
-          "domain:icecyber.org"
-        ]
-      },
-      {
-        "type": "field",
         "inboundTag": "inbound",
         "outboundTag": "$([[ ${config[warp]} == ON ]] && echo "warp" || echo "internet")"
       }
